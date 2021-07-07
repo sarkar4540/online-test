@@ -1,0 +1,114 @@
+body{
+  font-size:1.2em;
+}
+
+.container{
+  max-width: 800px;
+  width:100%;
+  position:relative;
+  margin:0 auto;
+}
+
+.actions{
+  text-align:center;
+}
+
+@media print
+{    
+    .actions,.actions *
+    {
+        display: none !important;
+    }
+}
+
+.details{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.title{
+  font-size: 1.1em;
+  padding:10px;
+  background:#b8d9f5;
+}
+
+.heading{
+  font-size: 1.1em;
+  padding:10px;
+  background:#f7bf48;
+  margin-top: 10px;
+}
+
+.can-details{
+  padding:10px;
+}
+
+.candidate-name{
+  font-size: 1.2em;
+  font-weight:bold;
+}
+
+#section-performances{
+  position:relative;
+  width:570px;
+  margin:0 auto;
+}
+
+.candidate-email{
+  font-style: italic;
+}
+
+.overview{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.section{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+}
+
+.section-name{
+  font-weight:bold;
+  padding:10px;
+  background:#f5cb70;
+  margin-top: 5px;
+}
+
+.section-info{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+.section-data{
+  flex:1;
+  padding:10px;
+}
+
+.percentage{
+  display:flex;
+  flex-direction:column;
+  text-align: center;
+  align-items: stretch;
+}
+
+.percentage-progress{
+  width:100%;
+}
+
+.performance-summary{
+  padding:10px;
+  flex:1;
+}
+
+.performance{
+  display:flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  flex:1;
+}

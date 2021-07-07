@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{test.title} Report
+        link(rel="stylesheet", href="/stylesheets/report.css")
+        script(src="https://www.gstatic.com/charts/loader.js")
+        script(src="/scripts/report.js")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js")
+        script google.charts.load('current', {'packages':['corechart']});google.charts.setOnLoadCallback(drawChart);function drawChart() {  var data = google.visualization.arrayToDataTable(!{JSON.stringify(section_performances)});  var options = {'title':'Section-wise performance', 'sliceVisibilityThreshold' :0, 'width':550, 'height':400};  var chart = new google.visualization.PieChart(document.getElementById('section-performances'));  chart.draw(data, options);}
+    body
+        div.actions 
+            button(onclick="window.print();") Print
+        div.container
+            div.title #{test.title} Report
+            div.details
+                div.can-details
+                    div.candidate-name #{user_details.first_name} #{user_details.last_name}
+                    div.candidate-email #{user_details.email}
+                div.test-details
+                    div.program Program: #{program.title}
+                    div.test-start-time Test attempted at: #{runtest_can.test_start_dttm}
+                    div.test-end-time Test ended at: #{runtest_can.test_end_dttm}
+            div.heading Overall Performance
+            div.overview 
+                div.performance-summary
+                    div.total-questions Total questions: #{total_questions}
+                    div.total-attempted Total questions attempted: #{total_questions_attempted}
+                    div.total-marks Total marks: #{total_marks}
+                    div.total-marks-obtained Total marks obtained: #{total_marks_obtained}
+                div.performance
+                    div.percentage 
+                        div.percentage-value #{percentage} % obtained
+                        progress(class="percentage-progress", value=total_marks_obtained, max=total_marks)
+            div(id="section-performances")
+            div.sections
+                div.heading Section-wise Summary
+                each section in sections
+                    div.section-name #{section.section_name}
+                    div.section 
+                        div.section-data
+                            div.section-questions Number of questions: #{section.total_questions}
+                            div.section-attempted Number of questions attempted:#{section.total_questions_attempted}
+                            div.section-marks Total marks: #{section.total_marks}
+                            div.section-marks-obtained Marks obtained: #{section.total_marks_obtained}
+                        div.section-info
+                            div.percentage 
+                                div.percentage-value #{section.percentage} % obtained
+                                progress(class="percentage-progress", value=section.total_marks_obtained, max=section.total_marks)
+                        
